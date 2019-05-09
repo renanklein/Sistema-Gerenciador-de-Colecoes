@@ -7,7 +7,7 @@
 ### Tecnologias
 
 O sistema terá duas partes: 
-- Uma api para suprir as requisições do usuário, que será desenvolvida em .net core 2.2.
+- Uma api para suprir as requisições do usuário, que será desenvolvida em .NET core 2.2.
 - Interface com o usuário, que será construida utilizando HTML, CSS e JavaScript.
 
 ### Como executar o projeto
