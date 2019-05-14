@@ -1,0 +1,14 @@
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\bin\Debug\netcoreapp2.2\API_Colecoes.deps.json
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\bin\Debug\netcoreapp2.2\API_Colecoes.runtimeconfig.json
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\bin\Debug\netcoreapp2.2\API_Colecoes.runtimeconfig.dev.json
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\bin\Debug\netcoreapp2.2\API_Colecoes.dll
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.csprojAssemblyReference.cache
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.csproj.CoreCompileInputs.cache
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.RazorAssemblyInfo.cache
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.RazorAssemblyInfo.cs
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.AssemblyInfoInputs.cache
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.AssemblyInfo.cs
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.RazorTargetAssemblyInfo.cache
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\bin\Debug\netcoreapp2.2\API_Colecoes.pdb
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.dll
+C:\Users\killr\source\repos\API_Colecoes\API_Colecoes\obj\Debug\netcoreapp2.2\API_Colecoes.pdb

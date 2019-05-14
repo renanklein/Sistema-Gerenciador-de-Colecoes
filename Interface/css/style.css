@@ -1,0 +1,16 @@
+.barra_pesq{
+    width: 50px;
+    border: 2px solid #fbfbfb;
+    border-radius:5px;
+    background: url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    background-position: 2px 15px;
+    background-color:#fbfbfb;
+    padding: 12px 20px 12px 20px;
+    transition-property: width;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+    transition-delay: 0s;
+}
+.barra_pesq:focus{
+    width: 200px;
+}

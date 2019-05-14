@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Controle Coleção</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="index.html" class="navbar-brand ml-2">Controle Coleções</a>
+            <form class="form-inline">
+                <input type="search" class="barra_pesq">
+            </form>
+        </nav>
+    </header>
+    <main class="d-flex flex-column m-4">
+        <div class="jumbotron p-5 m-5">
+            <h5 class="display-4">
+                Bem Vindo ao sistema de controle de coleções !
+            </h5>
+            <p class="lead">
+                Aqui você pode gerenciar seus Livros, CDs e DVDs !
+            </p>
+            <hr>
+            <a href="html/cadastro.html" class="navbar-link">Clique aqui para inserir seus items !</a>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="dropdown m-2">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="botaoMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Ordernar por</button>
+                <div class="dropdown-menu" aria-labelledby="botaoMenu">
+                    <a href="#" class="dropdown-item">Nome</a>
+                    <a href="#" class="dropdown-item">Categoria</a>
+                    <a href="#" class="dropdown-item">Autor</a>
+                </div>
+            </div>
+
+            <div class="dropdown m-2">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="botaoMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Ordem</button>
+                <div class="dropdown-menu" aria-labelledby="botaoMenu">
+                    <a href="#" class="dropdown-item">Crescente</a>
+                    <a href="#" class="dropdown-item">Decrescente</a>
+                </div>
+            </div>
+        </div>
+        <div class="m-4 p-4">
+            <table class="table table-light">
+                <thead class="thead">
+                    <tr>
+                        <th>Item</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Autor</th>
+                        <th>Operação</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </main>
+    <script src="js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            axios.get("http://localhost:5000/api/item")
+                .then(resp => {
+                    const tbody = $("tbody");
+                    $.each(resp.data, (key, value) => {
+                        tbody.append("<tr></tr>")
+                            .append($("<td>").text(resp.data.tipo))
+                            .append($("<td>").text(resp.data.nome))
+                            .append($("<td>").text(resp.data.categoria))
+                            .append($("<td>").text(resp.data.autor))
+                            .append($(`<td><a href="html/emprestar.html?id=${resp.data.id}">Emprestar</a></td>`));
+                    })
+                })
+                .catch(err => console.log(err))
+        });
+    </script>
+</body>
+
+</html>
