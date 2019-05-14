@@ -21,6 +21,7 @@ namespace API_Colecoes.Controllers
         }
        [HttpGet]
        [Route("name")]
+       [EnableCors("Policy")]
        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByName(string ordernacao)
         {
             if(ordernacao == "crescente")
@@ -35,6 +36,7 @@ namespace API_Colecoes.Controllers
         }
         [HttpGet]
         [Route("categoria")]
+        [EnableCors("Policy")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(string ordenacao)
         {
             if(ordenacao == "crescente")
@@ -48,6 +50,7 @@ namespace API_Colecoes.Controllers
         }
         [HttpGet]
         [Route("autor")]
+        [EnableCors("Policy")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByAutor(string ordenacao)
         {
             if(ordenacao == "crescente")
@@ -62,6 +65,7 @@ namespace API_Colecoes.Controllers
         }
         [HttpGet]
         [Route("key")]
+        [EnableCors("Policy")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByKeyWord(string KeyWord)
         {
             return await _repositorio.Items.Where(i => i.Nome.StartsWith(KeyWord)).OrderBy(i => i.Nome).ToListAsync();

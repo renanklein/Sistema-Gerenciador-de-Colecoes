@@ -23,12 +23,14 @@ namespace API_Colecoes.Controllers
             _repositorio = repositorio;
         }
         [HttpGet]
+        [EnableCors("Policy")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
             return await _repositorio.Items.ToListAsync();
         }
 
         [HttpGet("{id}")]
+        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
             var item = await _repositorio.Items.FindAsync(id);
@@ -41,6 +43,7 @@ namespace API_Colecoes.Controllers
             return item;
         }
         [HttpPost]
+        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> PostItem([FromForm(Name ="tipo")] string Tipo,[FromForm(Name ="nome")] string Nome, 
             [FromForm(Name ="descricao")] string Descricao, [FromForm(Name ="img")] IFormFile Imagem, [FromForm(Name = "autor")] string Autor, 
             [FromForm(Name ="categoria")] string Categoria)
@@ -67,6 +70,7 @@ namespace API_Colecoes.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> PutEmprestadoItem([FromBody] string EmprestimoJson ,int id)
         {
             Item item = await _repositorio.Items.FindAsync(id);
@@ -92,6 +96,7 @@ namespace API_Colecoes.Controllers
             
         }
         [HttpDelete("{id}")]
+        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> DeleteItems(int id)
         {
             var item = await _repositorio.Items.FindAsync(id);

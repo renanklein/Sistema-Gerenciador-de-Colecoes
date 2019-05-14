@@ -19,7 +19,7 @@
         <div class="card">
             <h5 class="card-header">Formulário de cadastro de item</h5>
             <div class="card-body">
-                <form action="http://localhost:5000/api/item" class="form" id="form" method="post" enctype="multipart/form-data">
+                <form class="form" id="form">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
@@ -91,9 +91,19 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         $(document).ready(()=>{
-            $("form").submit((event)=>{
-                localStorage.setItem('msg','<div class="alert alert-success">Item cadastrado com sucesso</div>');
-                $(location).attr("href","..index.html");
+            $(".btn").click(()=>{
+                let form = $("#form")
+                let formValues = new FormData(form);
+                axios({
+                    method:"post",
+                    url:"http://localhost:5000/api/item",
+                    data:formValues,
+                    config:{headers:{"content-type":"multipart/form-data"}}
+                })
+                .then((resp)=>{
+
+                })
+                .catch((err) => console.log(err));
             });
         });
     </script>

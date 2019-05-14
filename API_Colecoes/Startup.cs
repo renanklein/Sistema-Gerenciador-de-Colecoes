@@ -33,7 +33,11 @@ namespace API_Colecoes
 
             services.AddSingleton<IFileProvider>(
                 new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Imagens")));
-            services.AddCors();
+            services.AddCors(p => p.AddPolicy("Policy",builder =>{
+                builder.WithOrigins()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +49,7 @@ namespace API_Colecoes
             }
 
             app.UseMvc();
+            app.UseCors("Policy");
         }
     }
 }
