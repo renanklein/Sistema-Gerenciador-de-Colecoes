@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API_Colecoes.Models;
@@ -12,6 +13,7 @@ namespace API_Colecoes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("Policy")]
     public class ItemConsultingController : ControllerBase
     {
         private readonly ItemContext _repositorio;
@@ -21,51 +23,25 @@ namespace API_Colecoes.Controllers
         }
        [HttpGet]
        [Route("name")]
-       [EnableCors("Policy")]
-       public async Task<ActionResult<IEnumerable<Item>>> GetItemsByName(string ordernacao)
+       public async Task<ActionResult<IEnumerable<Item>>> GetItemsByName()
         {
-            if(ordernacao == "crescente")
-            {
-                return await _repositorio.Items.OrderBy(i => i.Nome).ToListAsync();
-
-            }
-            else
-            {
-                return await _repositorio.Items.OrderByDescending(i => i.Nome).ToListAsync();
-            }
+            return await _repositorio.Items.OrderBy(i => i.Nome).ToListAsync();
         }
         [HttpGet]
         [Route("categoria")]
-        [EnableCors("Policy")]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(string ordenacao)
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory()
         {
-            if(ordenacao == "crescente")
-            {
-                return  await _repositorio.Items.OrderBy(i => i.Categoria).ToListAsync();
-            }
-            else
-            {
-                return await _repositorio.Items.OrderByDescending(i => i.Categoria).ToListAsync();
-            }
+            return await _repositorio.Items.OrderBy(i => i.Categoria).ToListAsync();
         }
         [HttpGet]
         [Route("autor")]
-        [EnableCors("Policy")]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByAutor(string ordenacao)
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByAutor()
         {
-            if(ordenacao == "crescente")
-            {
-                return await _repositorio.Items.OrderBy(i => i.Autor).ToListAsync();
-            }
-            else
-            {
-                return await _repositorio.Items.OrderByDescending(i => i.Autor).ToListAsync();
-            }
+            return await _repositorio.Items.OrderBy(i => i.Autor).ToListAsync();
 
         }
         [HttpGet]
         [Route("key")]
-        [EnableCors("Policy")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByKeyWord(string KeyWord)
         {
             return await _repositorio.Items.Where(i => i.Nome.StartsWith(KeyWord)).OrderBy(i => i.Nome).ToListAsync();

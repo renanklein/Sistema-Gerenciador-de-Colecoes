@@ -20,7 +20,6 @@ namespace API_Colecoes.Models
             modelBuilder.Entity<Item>().Property(i => i.Tipo).IsRequired();
             modelBuilder.Entity<Item>().Property(i => i.Nome).IsRequired();
             modelBuilder.Entity<Item>().Property(i => i.Descricao).IsRequired();
-            modelBuilder.Entity<Item>().Property(i => i.ImgPath).IsRequired();
             modelBuilder.Entity<Item>().Property(i => i.Categoria).IsRequired();
             modelBuilder.Entity<Item>().Property(i => i.Autor).IsRequired();
         }

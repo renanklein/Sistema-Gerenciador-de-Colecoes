@@ -16,7 +16,6 @@ namespace API_Colecoes.Migrations
                     Tipo = table.Column<string>(nullable: false),
                     Nome = table.Column<string>(nullable: false),
                     Descricao = table.Column<string>(nullable: false),
-                    ImgPath = table.Column<string>(nullable: false),
                     Categoria = table.Column<string>(nullable: false),
                     Rua = table.Column<string>(nullable: true),
                     Numero = table.Column<int>(nullable: true),

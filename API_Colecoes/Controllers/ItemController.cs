@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using API_Colecoes.Models;
 
@@ -15,6 +14,7 @@ namespace API_Colecoes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("Policy")]
     public class ItemController : ControllerBase
     {
         private readonly ItemContext _repositorio;
@@ -23,14 +23,12 @@ namespace API_Colecoes.Controllers
             _repositorio = repositorio;
         }
         [HttpGet]
-        [EnableCors("Policy")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
             return await _repositorio.Items.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
             var item = await _repositorio.Items.FindAsync(id);
@@ -43,9 +41,8 @@ namespace API_Colecoes.Controllers
             return item;
         }
         [HttpPost]
-        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> PostItem([FromForm(Name ="tipo")] string Tipo,[FromForm(Name ="nome")] string Nome, 
-            [FromForm(Name ="descricao")] string Descricao, [FromForm(Name ="img")] IFormFile Imagem, [FromForm(Name = "autor")] string Autor, 
+            [FromForm(Name ="descricao")] string Descricao,[FromForm(Name = "autor")] string Autor, 
             [FromForm(Name ="categoria")] string Categoria)
         {
             Item item = new Item();
@@ -54,15 +51,7 @@ namespace API_Colecoes.Controllers
             item.Descricao = Descricao;
             item.Autor = Autor;
             item.Categoria = Categoria;
-
-
-            // var caminhoFile = Path.Combine(Directory.GetCurrentDirectory(),"../Imagens",Imagem.FileName);
-            var CaminhoTemp = Path.GetTempFileName();
-            using (var stream = new FileStream(CaminhoTemp,FileMode.Create))
-            {
-                await Imagem.CopyToAsync(stream);
-            }
-            item.ImgPath = CaminhoTemp;
+            item.Status = "Disponivel";
 
             await _repositorio.Items.AddAsync(item);
             await _repositorio.SaveChangesAsync();
@@ -70,7 +59,6 @@ namespace API_Colecoes.Controllers
         }
 
         [HttpPut("{id}")]
-        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> PutEmprestadoItem([FromBody] string EmprestimoJson ,int id)
         {
             Item item = await _repositorio.Items.FindAsync(id);
@@ -96,7 +84,6 @@ namespace API_Colecoes.Controllers
             
         }
         [HttpDelete("{id}")]
-        [EnableCors("Policy")]
         public async Task<ActionResult<Item>> DeleteItems(int id)
         {
             var item = await _repositorio.Items.FindAsync(id);

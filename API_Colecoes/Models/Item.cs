@@ -11,7 +11,6 @@ namespace API_Colecoes.Models
         public string Tipo { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public string ImgPath { get; set; }
         public string Categoria { get; set; }
         public string Rua { get; set; }
         public int? Numero { get; set; }
@@ -22,7 +21,7 @@ namespace API_Colecoes.Models
         public string Autor { get; set; }
         public string Nome_emprestado { get; set; }
         public string Contato_emprestado { get; set; }
-
+        public string Status { get; set; }
 
         
     }

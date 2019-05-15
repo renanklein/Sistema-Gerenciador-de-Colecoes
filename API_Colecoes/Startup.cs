@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -30,11 +31,8 @@ namespace API_Colecoes
             services.AddEntityFrameworkNpgsql()
                     .AddDbContext<ItemContext>()
                     .BuildServiceProvider();
-
-            services.AddSingleton<IFileProvider>(
-                new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Imagens")));
-            services.AddCors(p => p.AddPolicy("Policy",builder =>{
-                builder.WithOrigins()
+            services.AddCors(p => p.AddPolicy("Policy", builder => {
+                builder.AllowAnyOrigin()
                        .AllowAnyHeader()
                        .AllowAnyMethod();
             }));
@@ -47,9 +45,8 @@ namespace API_Colecoes
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseMvc();
             app.UseCors("Policy");
+            app.UseMvc();
         }
     }
 }
