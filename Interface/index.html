@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-dark fixed-top bg-dark">
             <a href="index.html" class="navbar-brand ml-2">Controle Coleções</a>
             <form class="form-inline">
                 <input type="search" class="barra_pesq">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="m-4 p-4">
+        <div class="m-4 p-4" id="table">
             <table class="table table-light">
                 <thead>
                     <tr>
@@ -73,32 +73,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/getItems.js"></script>
-    <script>
-        $(document).ready(() => {
-            $("#nome").click((event) => {
-                event.preventDefault();
-                $("td").each((i, elem) => {
-                    elem.remove();
-                });
-                axios.get("http://localhost:5000/api/itemConsulting/name")
-                    .then((resp) => {
-                        $("th").filter(":contains('Nome')").css('color','#2b71e2');
-                        let items = resp.data;
-                        items.forEach(item => {
-                            let html = `<tr>
-                            <td>${item.tipo}</td>
-                                <td>${item.nome}</td>
-                                <td>${item.categoria}</td>
-                                <td>${item.autor}</td>
-                                <td>${item.status}</td>
-                                <td><a href="html/emprestar?id=${item.itemId}">Emprestar</a></td>
-                                </tr>`;
-                            $('table').append("<tr>").append(html).hide().fadeIn(500);
-                        });
-                    });
-            });
-        });
-    </script>
+    <script src="js/displayItems.js"></script>
+    <script src="js/keywordSearch.js"></script>
 </body>
 
 </html>

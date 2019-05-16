@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using API_Colecoes.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -42,9 +43,9 @@ namespace API_Colecoes.Controllers
         }
         [HttpGet]
         [Route("key")]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByKeyWord(string KeyWord)
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByKeyWord([FromQuery(Name = "chave")]string keyword)
         {
-            return await _repositorio.Items.Where(i => i.Nome.StartsWith(KeyWord)).OrderBy(i => i.Nome).ToListAsync();
+            return await _repositorio.Items.Where(i => i.Nome.StartsWith(keyword)).OrderBy(i => i.Nome).ToListAsync();
         }
     }
 }
