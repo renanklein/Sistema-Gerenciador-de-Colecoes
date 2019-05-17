@@ -58,26 +58,26 @@ namespace API_Colecoes.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<Item>> PutEmprestadoItem([FromBody] string EmprestimoJson ,int id)
+        [HttpPost]
+        [Route("emprestar")]
+        public async Task<ActionResult<Item>> PutEmprestadoItem([FromQuery(Name ="id")]int id,[FromForm(Name ="rua")] string rua,
+            [FromForm(Name ="numero")] string numero,[FromForm(Name ="complemento")] string complemento,
+            [FromForm(Name ="estado")] string estado, [FromForm(Name ="cidade")] string cidade)
         {
             Item item = await _repositorio.Items.FindAsync(id);
 
-            if(item == null)
+            if (item == null)
             {
                 return BadRequest();
             }
+            item.Rua = rua;
+            item.Numero = Convert.ToInt32(numero);
+            item.Complemento = complemento;
+            item.Estado = estado;
+            item.Cidade = cidade;
+            item.Status = "Emprestado";
 
-            var json = JObject.Parse(EmprestimoJson);
-            item.Rua = json.GetValue("rua").ToString();
-            item.Numero = Convert.ToInt32(json.GetValue("numero").ToString());
-            item.Complemento = json.GetValue("complemento").ToString();
-            item.Cidade = json.GetValue("cidade").ToString();
-            item.Estado = json.GetValue("estado").ToString();
-            item.Nome_emprestado = json.GetValue("nome_emprestado").ToString();
-            item.Contato_emprestado = json.GetValue("contato_empretado").ToString();
-             _repositorio.Entry(item).State = EntityState.Modified;
-
+            _repositorio.Entry(item).State = EntityState.Modified;
             await _repositorio.SaveChangesAsync();
 
             return NoContent();

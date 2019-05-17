@@ -19,90 +19,112 @@
         <div class="card">
             <h5 class="card-header">Emprestar Item</h5>
             <div class="card-body">
-
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="rua">Rua:</label>
-                            <input type="text" name="rua" id="rua" class="form-control"
-                                placeholder="Digite o nome da rua ..." required>
+                <form action="post" id="form">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="rua">Rua:</label>
+                                <input type="text" name="rua" id="rua" class="form-control"
+                                    placeholder="Digite o nome da rua ..." required>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="numero">Número:</label>
-                            <input type="number" name="numero" min="1" id="numero" class="form-control"
-                                placeholder="Selecione o número do local onde o item ficará ..." required>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="numero">Número:</label>
+                                <input type="number" name="numero" min="1" id="numero" class="form-control"
+                                    placeholder="Selecione o número do local onde o item ficará ..." required>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="complemento">Complemento:</label>
-                            <input type="text" name="complemento" id="complemento" class="form-control"
-                                placeholder="Digite o complemento,caso tenha">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="complemento">Complemento:</label>
+                                <input type="text" name="complemento" id="complemento" class="form-control"
+                                    placeholder="Digite o complemento,caso tenha">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="estados">Estado:</label>
-                            <select name="estado" id="estados" class="form-control" required>
-                                    <option value="estado">Selecione o Estado</option> 
-                                    <option value="ac">Acre</option> 
-                                    <option value="al">Alagoas</option> 
-                                    <option value="am">Amazonas</option> 
-                                    <option value="ap">Amapá</option> 
-                                    <option value="ba">Bahia</option> 
-                                    <option value="ce">Ceará</option> 
-                                    <option value="df">Distrito Federal</option> 
-                                    <option value="es">Espírito Santo</option> 
-                                    <option value="go">Goiás</option> 
-                                    <option value="ma">Maranhão</option> 
-                                    <option value="mt">Mato Grosso</option> 
-                                    <option value="ms">Mato Grosso do Sul</option> 
-                                    <option value="mg">Minas Gerais</option> 
-                                    <option value="pa">Pará</option> 
-                                    <option value="pb">Paraíba</option> 
-                                    <option value="pr">Paraná</option> 
-                                    <option value="pe">Pernambuco</option> 
-                                    <option value="pi">Piauí</option> 
-                                    <option value="rj">Rio de Janeiro</option> 
-                                    <option value="rn">Rio Grande do Norte</option> 
-                                    <option value="ro">Rondônia</option> 
-                                    <option value="rs">Rio Grande do Sul</option> 
-                                    <option value="rr">Roraima</option> 
-                                    <option value="sc">Santa Catarina</option> 
-                                    <option value="se">Sergipe</option> 
-                                    <option value="sp">São Paulo</option> 
-                                    <option value="to">Tocantins</option> 
-                            </select>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="estados">Estado:</label>
+                                <select name="estado" id="estados" class="form-control" required>
+                                    <option value="estado">Selecione o Estado</option>
+                                    <option value="ac">Acre</option>
+                                    <option value="al">Alagoas</option>
+                                    <option value="am">Amazonas</option>
+                                    <option value="ap">Amapá</option>
+                                    <option value="ba">Bahia</option>
+                                    <option value="ce">Ceará</option>
+                                    <option value="df">Distrito Federal</option>
+                                    <option value="es">Espírito Santo</option>
+                                    <option value="go">Goiás</option>
+                                    <option value="ma">Maranhão</option>
+                                    <option value="mt">Mato Grosso</option>
+                                    <option value="ms">Mato Grosso do Sul</option>
+                                    <option value="mg">Minas Gerais</option>
+                                    <option value="pa">Pará</option>
+                                    <option value="pb">Paraíba</option>
+                                    <option value="pr">Paraná</option>
+                                    <option value="pe">Pernambuco</option>
+                                    <option value="pi">Piauí</option>
+                                    <option value="rj">Rio de Janeiro</option>
+                                    <option value="rn">Rio Grande do Norte</option>
+                                    <option value="ro">Rondônia</option>
+                                    <option value="rs">Rio Grande do Sul</option>
+                                    <option value="rr">Roraima</option>
+                                    <option value="sc">Santa Catarina</option>
+                                    <option value="se">Sergipe</option>
+                                    <option value="sp">São Paulo</option>
+                                    <option value="to">Tocantins</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="cidade">Cidade:</label>
-                            <input type="text" name="cidade" id="cidade" class="form-control" 
-                            placeholder="Digite o nome da cidade onde o item ficará ..." required></input>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="cidade">Cidade:</label>
+                                <input type="text" name="cidade" id="cidade" class="form-control"
+                                    placeholder="Digite o nome da cidade onde o item ficará ..." required></input>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <a href="../index.html" class="mt-2 ml-3">Voltar</a>
-                    <button type="submit" class="mr-3 btn btn-outline-success">Emprestar</button>
-                </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <a href="../index.html" class="mt-2 ml-3">Voltar</a>
+                        <button type="submit" class="mr-3 btn btn-outline-success">Emprestar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
+    <script src="../js/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        $(document).ready(() => {
+            $("#form").submit(event => {
+                event.preventDefault();
+                let formData = new FormData();
+                formData.set("rua", $("#rua").val());
+                formData.set("numero", $("#numero").val());
+                formData.set("complemento", $("#complemento").val());
+                formData.set("estado", $("#estados").val());
+                formData.set("cidade", $("#cidade").val());
 
+                const id = new URLSearchParams(window.location.search).get('id');
+
+                axios.post(`http://localhost:5000/api/item/emprestar?id=${id}`, formData)
+                    .then((resp) => {
+                        localStorage.setItem('msg', '<div class="alert alert-success m-4">Item emprestado com sucesso!</div>');
+                        window.location.replace("../index.html");
+                    })
+                    .catch((err) => console.log(err));
+            });
+        });
     </script>
 </body>
 

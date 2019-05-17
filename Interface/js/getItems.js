@@ -12,8 +12,10 @@ $(document).ready(() => {
                                 <td>${item.nome}</td>
                                 <td>${item.categoria}</td>
                                 <td>${item.autor}</td>
-                                <td>${item.status}</td>
-                                <td><a href="html/emprestar.html?id=${item.itemId}">Emprestar</a></td>`;
+                                <td>${item.status}</td>`;
+                    if(item.status === "Disponivel"){
+                        html.concat(`<td><a href="html/emprestar.html?id=${item.itemId}">Emprestar</a></td>`);
+                    }
                     $('tbody').append("<tr>").append(html);
             });
         })

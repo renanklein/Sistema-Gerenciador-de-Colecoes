@@ -17,14 +17,17 @@ $(document).ready(() => {
                 } else {
                     $(".alert").remove();
                     items.forEach(item => {
-                        let html = `<tr>
+                        let html = `
                             <td>${item.tipo}</td>
                             <td>${item.nome}</td>
                             <td>${item.categoria}</td>
                             <td>${item.autor}</td>
                             <td>${item.status}</td>
-                            <td><a href="html/emprestar.html?id=${item.itemId}">Emprestar</a></td>
-                            </tr>`;
+                            `;
+
+                        if (item.status === "Disponivel") {
+                            html.concat(`<td><a href="html/emprestar.html?id=${item.itemId}">Emprestar</a></td>`);
+                        }
                         $('table').append("<tr>").append(html).hide().fadeIn(500);
                     });
                 }
