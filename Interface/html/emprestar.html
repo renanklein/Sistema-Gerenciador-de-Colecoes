@@ -93,6 +93,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" name="nome" id="nome" class="form-control"
+                                    placeholder="Digite o nome da pessoa ao qual esta emprestando..." required></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="contato">Contato:</label>
+                                <input type="tel" name="contato" id="contato" class="form-control"
+                                    placeholder="Digite o contato da pessoa na qual esta emprestando ..." required></input>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <div class="d-flex justify-content-between">
                         <a href="../index.html" class="mt-2 ml-3">Voltar</a>
@@ -114,16 +133,19 @@
                 formData.set("complemento", $("#complemento").val());
                 formData.set("estado", $("#estados").val());
                 formData.set("cidade", $("#cidade").val());
+                formData.set("nome",$("#nome").val());
+                formData.set("contato",$("#contato").val());
 
                 const id = new URLSearchParams(window.location.search).get('id');
 
                 axios.post(`http://localhost:5000/api/item/emprestar?id=${id}`, formData)
                     .then((resp) => {
-                        localStorage.setItem('msg', '<div class="alert alert-success m-4">Item emprestado com sucesso!</div>');
+                        localStorage.setItem('msg', '<div class="alert alert-success m-5">Item emprestado com sucesso!</div>');
                         window.location.replace("../index.html");
                     })
                     .catch((err) => console.log(err));
             });
+            
         });
     </script>
 </body>

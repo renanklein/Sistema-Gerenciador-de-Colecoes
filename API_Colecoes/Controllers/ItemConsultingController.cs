@@ -43,9 +43,16 @@ namespace API_Colecoes.Controllers
         }
         [HttpGet]
         [Route("key")]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByKeyWord([FromQuery(Name = "chave")]string keyword)
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByKeyword([FromQuery(Name ="palavra")]string chave)
         {
-            return await _repositorio.Items.Where(i => i.Nome.StartsWith(keyword)).OrderBy(i => i.Nome).ToListAsync();
+            chave = chave.Replace('+', ' ');
+            return await _repositorio.Items.Where(i => i.Tipo.Contains(chave) || i.Nome.Contains(chave) || i.Categoria.Contains(chave) || i.Autor.Contains(chave)).ToListAsync();
+        }
+
+        [HttpGet("{status}")]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByStatus(string status)
+        {
+            return await _repositorio.Items.Where(i => i.Status.Contains(status)).OrderBy(i => i.Nome).ToListAsync();
         }
     }
 }

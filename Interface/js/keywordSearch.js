@@ -1,8 +1,8 @@
+import { displayItem } from './functions.js'
 $(document).ready(() => {
-    $(".barra_pesq").keyup((event) => {
-        let keyword = $(".barra_pesq").val().replace(' ', '+');
-        console.log(keyword);
-        axios.get(`http://localhost:5000/api/itemConsulting/key?chave=${keyword}`)
+    $(".barra_pesq").keypress((event) => {
+        let keyword = $(".barra_pesq").val();
+        axios.get(`http://localhost:5000/api/itemConsulting/key/?palavra=${keyword}`)
             .then((resp) => {
                 $("th").each((i, elem) => {
                     elem.style.color = "#212529";
@@ -16,20 +16,7 @@ $(document).ready(() => {
                     $("#table").prepend('<div class="alert alert-danger m-4">Nenhum item encontrado</div>');
                 } else {
                     $(".alert").remove();
-                    items.forEach(item => {
-                        let html = `
-                            <td>${item.tipo}</td>
-                            <td>${item.nome}</td>
-                            <td>${item.categoria}</td>
-                            <td>${item.autor}</td>
-                            <td>${item.status}</td>
-                            `;
-
-                        if (item.status === "Disponivel") {
-                            html.concat(`<td><a href="html/emprestar.html?id=${item.itemId}">Emprestar</a></td>`);
-                        }
-                        $('table').append("<tr>").append(html).hide().fadeIn(500);
-                    });
+                    items.forEach(item => displayItem(item, keyword));
                 }
             })
             .catch(err => console.log(err));

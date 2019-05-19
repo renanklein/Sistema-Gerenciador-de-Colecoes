@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Devolver</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="../index.html" class="navbar-brand ml-2">Controle Coleções</a>
+        </nav>
+    </header>
+    <main class="m-4">
+        <div class="alert alert-warning m-4">
+            As informações abaixo serão excluidas
+        </div>
+        <div class="card">
+            <h5 class="card-header">Alterar Item</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="rua">Rua:</label>
+                            <input type="text" name="rua" id="rua" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="numero">Numero:</label>
+                            <input type="text" name="numero" id="numero" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="complemento">Complemento:</label>
+                            <input type="text" name="complemento" id="complemento" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="estado">Estado:</label>
+                            <input type="text" name="estado" id="estado" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" name="cidade" id="cidade" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="Nome">Nome:</label>
+                            <input type="text" name="Nome" id="Nome" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="contato">Contato:</label>
+                            <input type="text" name="contato" id="contato" class="form-control" readonly>
+                        </div>
+                    </div>
+                    
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <a href="../index.html" class="mt-2 ml-3">Voltar</a>
+                    <button class="btn btn-outline-success mr-3">Devolver</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            const id = new URLSearchParams(window.location.search).get('id');
+            let item;
+            axios.get(`http://localhost:5000/api/item/${id}`)
+                .then(resp => {
+                    item = resp.data;
+                    $("#rua").attr("value", item.rua);
+                    $("#numero").attr("value", item.numero);
+                    $("#complemento").attr("value", item.complemento);
+                    $("#estado").attr("value", item.estado);
+                    $("#cidade").attr("value", item.cidade);
+                    $("#nome").attr("value",item.nome_emprestado);
+                    $("#contato").attr("value",item.contato_emprestado);
+                })
+                .catch(err => console.log(err));
+
+            $(".btn").click((event) => {
+                event.preventDefault();
+                item.rua = '';
+                item.numero = 0;
+                item.complemento = '';
+                item.estado = '';
+                item.cidade = '';
+                item.status = 'Disponivel';
+                axios.put(`http://localhost:5000/api/item/${id}`, item)
+                    .then(resp => {
+                        localStorage.setItem('msg', '<div class="alert alert-success m-5">Item devolvido com sucesso!</div>');
+                        window.location.replace("../index.html");
+                    })
+                    .catch(err => console.log(err));
+            });
+        });
+    </script>
+</body>
+
+</html>
