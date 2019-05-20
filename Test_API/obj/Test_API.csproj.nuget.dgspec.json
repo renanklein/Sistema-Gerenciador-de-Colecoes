@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\killr\\source\\repos\\API_Colecoes\\API_Colecoes\\API_Colecoes.csproj": {}
+    "C:\\Users\\killr\\source\\repos\\API_Colecoes\\Test_API\\Test_API.csproj": {}
   },
   "projects": {
     "C:\\Users\\killr\\source\\repos\\API_Colecoes\\API_Colecoes\\API_Colecoes.csproj": {
@@ -87,6 +87,90 @@
             "xunit": {
               "target": "Package",
               "version": "[2.4.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\killr\\source\\repos\\API_Colecoes\\Test_API\\Test_API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\killr\\source\\repos\\API_Colecoes\\Test_API\\Test_API.csproj",
+        "projectName": "Test_API",
+        "projectPath": "C:\\Users\\killr\\source\\repos\\API_Colecoes\\Test_API\\Test_API.csproj",
+        "packagesPath": "C:\\Users\\killr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\killr\\source\\repos\\API_Colecoes\\Test_API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\killr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\killr\\source\\repos\\API_Colecoes\\API_Colecoes\\API_Colecoes.csproj": {
+                "projectPath": "C:\\Users\\killr\\source\\repos\\API_Colecoes\\API_Colecoes\\API_Colecoes.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.0.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.10.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
             }
           },
           "imports": [

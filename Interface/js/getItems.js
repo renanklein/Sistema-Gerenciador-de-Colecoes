@@ -1,28 +1,9 @@
 import { displayItem } from './functions.js';
 import { displayPaginateButton } from './pagination.js';
+import { getElement } from './displayItems.js'
 
-function paginate(seletor, paginate_info) {
-    $(seletor).click((event) => {
-        event.preventDefault();
-        const pagina = paginate_info.pagina;
-        let uri = '';
-        if (seletor.indexOf("#pre") !== -1) {
-            uri = `http://localhost:5000/api/item?&pagina=${pagina - 1}&itens=5`;
-        }
-        else if (selector.indexOf("#pos") !== -1) {
-            uri = `http://localhost:5000/api/item?&pagina=${pagina + 1}&itens=5`;
-        }
-        axios.get(uri)
-            .then((resp) => {
-                let items = resp.data;
-                console.log(resp.data);
-                items.forEach(item => displayItem(item));
-            })
-            .catch(err => console.log(err));
-    })
-}
-let pagination_info;
 $(document).ready(() => {
+    let pagina;
     if (localStorage.getItem("msg")) {
         $("main").prepend(localStorage.getItem("msg"));
         localStorage.clear();
@@ -30,15 +11,14 @@ $(document).ready(() => {
     axios.get(`http://localhost:5000/api/item?&pagina=1&itens=5`)
         .then(resp => {
             let items = resp.data;
-            pagination_info = JSON.parse(resp.headers.paginacao);
+            let pagination_info = JSON.parse(resp.headers.paginacao);
+            pagina = pagination_info.pagina;
             console.log(pagination_info.pagina);
             items.forEach(item => displayItem(item));
             displayPaginateButton(pagination_info);
+            getElement("#pre", "", `http://localhost:5000/api/item?&pagina=${pagination_info.pagina - 1}&itens=5`);
+            getElement("#pos", "", `http://localhost:5000/api/item?&pagina=${pagination_info.pagina + 1}&itens=5`);
         })
         .catch(err => console.log(err));
 });
 
-$(document).ready(() => {
-    paginate('#pre', pagination_info)
-    paginate('#pos', pagination_info)
-})

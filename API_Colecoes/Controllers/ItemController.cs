@@ -20,7 +20,8 @@ namespace API_Colecoes.Controllers
     [EnableCors("Policy")]
     public class ItemController : ControllerBase
     {
-        private readonly ItemContext _repositorio;
+        private readonly ItemContext _repositorio;  
+  
         public ItemController(ItemContext repositorio)
         {
             _repositorio = repositorio;

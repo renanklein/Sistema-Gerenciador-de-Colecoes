@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_Colecoes", "API_Colecoes\API_Colecoes.csproj", "{9198FE38-E2A1-457F-9BDF-4F03AC893BBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_API", "Test_API\Test_API.csproj", "{BEDCD6C7-4DBF-439A-B3C0-FF20D7569B45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9198FE38-E2A1-457F-9BDF-4F03AC893BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9198FE38-E2A1-457F-9BDF-4F03AC893BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9198FE38-E2A1-457F-9BDF-4F03AC893BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9198FE38-E2A1-457F-9BDF-4F03AC893BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEDCD6C7-4DBF-439A-B3C0-FF20D7569B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEDCD6C7-4DBF-439A-B3C0-FF20D7569B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEDCD6C7-4DBF-439A-B3C0-FF20D7569B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEDCD6C7-4DBF-439A-B3C0-FF20D7569B45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B531775-213E-496D-BD9F-0CA1FF540A9D}
+	EndGlobalSection
+EndGlobal

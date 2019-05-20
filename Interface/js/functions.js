@@ -1,4 +1,4 @@
-export function displayItem(item,chave='') {
+export function displayItem(item) {
     let html = `<tr>
                     <td>${item.tipo}</td>
                     <td>${item.nome}</td>

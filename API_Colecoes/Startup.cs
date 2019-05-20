@@ -12,7 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using API_Colecoes.Models;
-using API_Colecoes.Services;
 
 namespace API_Colecoes
 {
@@ -38,7 +37,6 @@ namespace API_Colecoes
                        .AllowAnyMethod()
                        .WithExposedHeaders("paginacao");
             }));
-            services.AddScoped<IItemTestService, ItemServiceFake>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
