@@ -10,10 +10,6 @@ namespace API_Colecoes.Models
         {
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseNpgsql("Host=localhost;Port=5432;Database=Colecoes;Username=postgres;Password=root");
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Item>().Property(i => i.ItemId).ValueGeneratedOnAdd();

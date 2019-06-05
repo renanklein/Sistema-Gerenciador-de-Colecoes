@@ -29,7 +29,8 @@ namespace API_Colecoes
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddEntityFrameworkNpgsql()
-                    .AddDbContext<ItemContext>()
+                    .AddDbContext<ItemContext>(
+                options => options.UseNpgsql("Host=localhost;Port=5432;Database=Colecoes;Username=postgres;Password=root"))
                     .BuildServiceProvider();
             services.AddCors(p => p.AddPolicy("Policy", builder => {
                 builder.AllowAnyOrigin()
